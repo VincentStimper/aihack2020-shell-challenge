@@ -58,6 +58,6 @@ def extract_sequences(np_data):
 
     all_data = []
     for i in range(counters.shape[0]-1):
-        all_data.append(np_data[counters[i]:counters[i+1], :])
+        all_data.append(np_data[counters[i]:counters[i+1], 0:units])
         
     return all_data # return list 
