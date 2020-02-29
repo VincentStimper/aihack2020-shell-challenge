@@ -4,20 +4,6 @@ import zipfile
 import os
 import pandas as pd
 
-def rm_nan(X, axis=0):
-    """
-    Cuts out slices along axis containing nans
-    :param X: Numpy matrix containing nans
-    :param axis: axis along which nans shall be cut out
-    :return: X matrix without nans
-    """
-
-    bool_nan = np.isnan(X)
-    where_nan = np.where(bool_nan)
-    ind_cut = np.unique(where_nan[axis])
-    X_ = np.delete(X, ind_cut, axis)
-    return X_
-
 def download_data():
     """
     Download and extract the shell challenge data
@@ -36,6 +22,23 @@ def download_data():
         with zipfile.ZipFile("tmp.zip") as f:
             f.extractall("shell_data")
     print("Done!")
+
+
+def rm_nan(X, axis=0):
+    """
+    Cuts out slices along axis containing nans
+    :param X: Numpy matrix containing nans
+    :param axis: axis along which nans shall be cut out
+    :return: X matrix without nans
+    """
+
+    bool_nan = np.isnan(X)
+    where_nan = np.where(bool_nan)
+    ind_cut = np.unique(where_nan[axis])
+    X_ = np.delete(X, ind_cut, axis)
+    return X_
+
+
     
 def extract_sequences(np_data):
     """
@@ -45,11 +48,12 @@ def extract_sequences(np_data):
     time_bins = np_data.shape[0]
 
     counters = []
+    ori_index = np_data[:, units].astype(int)
     for i in range(time_bins-1):
         if ori_index[i] != ori_index[i+1] - 1:
             counters.append(i)
 
-    counters.append(time_bins)
+    counters.append(time_bins) # counters label the sequences in the dataset
     counters = np.asarray(counters)
 
     all_data = []
