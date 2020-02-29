@@ -2,6 +2,7 @@ import numpy as np
 import urllib.request
 import zipfile
 import os
+import pandas as pd
 
 def rm_nan(X, axis=0):
     """
@@ -17,7 +18,7 @@ def rm_nan(X, axis=0):
     X_ = np.delete(X, ind_cut, axis)
     return X_
 
-def download_data()
+def download_data():
     """
     Download and extract the shell challenge data
     """
@@ -35,3 +36,24 @@ def download_data()
         with zipfile.ZipFile("tmp.zip") as f:
             f.extractall("shell_data")
     print("Done!")
+    
+def extract_sequences(np_data):
+    """
+    Extract the continuous signals from the time series (numpy array)
+    """
+    units = np_data.shape[1] - 1 # last one is index counter
+    time_bins = np_data.shape[0]
+
+    counters = []
+    for i in range(time_bins-1):
+        if ori_index[i] != ori_index[i+1] - 1:
+            counters.append(i)
+
+    counters.append(time_bins)
+    counters = np.asarray(counters)
+
+    all_data = []
+    for i in range(counters.shape[0]-1):
+        all_data.append(np_data[counters[i]:counters[i+1], :])
+        
+    return all_data # return list 
