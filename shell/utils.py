@@ -10,8 +10,6 @@ def rm_nan(X, axis=0):
 
     bool_nan = np.isnan(X)
     where_nan = np.where(bool_nan)
-    ind_cuts = np.unique(where_nan[axis])
-    for ind_cut in ind_cuts:
-        np.delete(X, ind_cut, axis)
-
-    return X
+    ind_cut = np.unique(where_nan[axis])
+    X_ = np.delete(X, ind_cut, axis)
+    return X_
