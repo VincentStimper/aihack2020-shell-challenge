@@ -14,4 +14,12 @@ A chunk of data belongs to the anomaly class if an anomaly happens at its end. T
 is that there only 9 anomalies. However, avoiding them is very beneficial. Therefore,
 we could risk some false positives if we can find them.
 
+First, we did a principal component analysis on the data.
+The anomalies clearly cluster within two regions.
+
 ![PCA of chunked data](https://github.com/VincentStimper/aihack2020-shell-challenge/blob/master/images/pca.png "PCA of chunked data")
+
+Since the problem is obviously not linearly separable, we use the set of [Radial Basis Functions](https://en.wikipedia.org/wiki/Radial_basis_function)
+to generate features for logistic regression.
+
+Thereby, we are able to identify 5 out of 9 anomalies at a false positive rate of only 8.4%.
