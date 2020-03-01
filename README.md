@@ -1,6 +1,6 @@
 # Anomaly Detection with Logistic Regression
 
-Our notebook `logistic_regression.ipynb` is available in Google Colab.
+Our notebook `1_Logistic_Regression.ipynb` is available in Google Colab.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VincentStimper/aihack2020-shell-challenge)
 
