@@ -2,7 +2,7 @@
 
 Our notebook is available in Google Colab.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/VincentStimper/aihack2020-shell-challenge)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VincentStimper/aihack2020-shell-challenge)
 
 ## Methods of installation
 
