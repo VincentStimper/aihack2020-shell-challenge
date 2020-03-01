@@ -1,19 +1,17 @@
 # Anomaly Detection with Logistic Regression
 
-Our notebook is available in Google Colab.
+Our notebook `ĺogistic_regression.ipynb is available in Google Colab.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VincentStimper/aihack2020-shell-challenge)
 
-## Methods of installation
+## Summary
 
-The latest version of the package can be installed via pip
+To classify the anomalies in the data, we split the data into chunks consisting of 10 time steps,
+i.e. 90 minutes. This is time window is much longer than thermal and mechanical processes. Hence,
+the data within this time frame should be sufficient to explain why and how the anomaly arised.
 
-```
-pip install --upgrade git+https://github.com/VincentStimper/fuller.git
-```
+A chunk of data belongs to the anomaly class if an anomaly happens at its end. The challenge
+is that there only 9 anomalies. However, avoiding them is very beneficial. Therefore,
+we could risk some false positives if we can find them.
 
-Alternatively, download the repository and run
-
-```
-python setup.py install
-```
+![PCA of chunked data](https://github.com/VincentStimper/aihack2020-shell-challenge/blob/master/images/pca.png "PCA of chunked data")
